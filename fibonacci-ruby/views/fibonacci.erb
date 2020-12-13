@@ -1,0 +1,27 @@
+<% if errorMessage %>
+	<h3>Server returned an error. Please, try again later.</h3>
+	<h4><%= errorMessage %></h4>
+<% end %> 
+
+<form method="get">
+	<label>Size</label> <input name="n" value="<%= size %>" placeholder="size of the sequence"> <input type="submit" value="Generate">
+</form>
+
+<br>
+
+<% if !table.nil? %>
+	<table>
+	<% table.each do |row| %>
+		<tr>
+		<% row.each do |col| %>
+			<td><%= col %></td>
+		<% end %>
+		</tr>
+	<% end %>
+	</table>
+	<br>
+<% end %>
+
+<form method="post">
+	<input type="submit" value="Save" <%= saved ? "disabled" : "" %> >
+</form>
