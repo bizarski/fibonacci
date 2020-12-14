@@ -9,9 +9,9 @@ function getMultiplicationRow(multiplicator, numbers) {
 
 module.exports = {
 	generateFibonacciSequence: function(n) {
-		const result = [0, 1];
-		for(let i = 0; i < n-2; i++) {
-			let nextNumber = result[result.length - 1] + result[result.length - 2];
+		const result = [];
+		for(let i = 0; i < n; i++) {
+			let nextNumber = i <= 1 ? i : result[result.length - 1] + result[result.length - 2];
 			result.push(nextNumber);
 		}
 

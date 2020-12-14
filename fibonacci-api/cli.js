@@ -1,4 +1,4 @@
-const yargs = require('yargs');
+const yargs = require("yargs");
 
 const {generateMultiplicationTable, generateFibonacciSequence} = require("./lib");
 
@@ -12,6 +12,7 @@ const argv = yargs
     })
     .help()
     .alias('help', 'h')
+	.alias('size', 'n')
     .argv;
 
 if(!argv.n)
@@ -25,7 +26,7 @@ if(argv.n > 30)
 	console.error("Error: Exceeded maximum allowed size.");
 	process.exit();
 }
-	
+
 const table = (generateMultiplicationTable(generateFibonacciSequence(argv.n)));
 const lastRow = table[table.length-1];
 const biggestNumber = lastRow[lastRow.length - 1];

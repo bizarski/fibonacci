@@ -1,7 +1,7 @@
 const express = require("express");
-const bodyParser = require('body-parser');
+const bodyParser = require("body-parser");
 
-const MongoClient = require('mongodb').MongoClient;
+const MongoClient = require("mongodb").MongoClient;
 
 const {generateMultiplicationTable, generateFibonacciSequence} = require("./lib");
 
@@ -9,8 +9,8 @@ const app = express();
 app.use(bodyParser.json());
 const port = 3000;
 
-const dbUrl = 'mongodb://localhost:27017';
-const dbName = 'fibonaccidb';
+const dbUrl = "mongodb://localhost:27017";
+const dbName = "fibonaccidb";
 const dbClient = new MongoClient(dbUrl);
 
 dbClient.connect((err) => {
