@@ -22,7 +22,7 @@ if(!argv.n)
 
 if(argv.n > 30)
 {
-	console.error("Error: Exceeded maximum size.");
+	console.error("Error: Exceeded maximum allowed size.");
 	process.exit();
 }
 	

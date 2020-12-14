@@ -1,11 +1,3 @@
-function fibonacci(n) {
-	if (n <= 1) { 
-		return 1;
-	}
-
-	return fibonacci(n - 1) + fibonacci(n - 2);
-}
-
 function getMultiplicationRow(multiplicator, numbers) {		
 	const result = [];
 	result.push(multiplicator);
@@ -17,9 +9,10 @@ function getMultiplicationRow(multiplicator, numbers) {
 
 module.exports = {
 	generateFibonacciSequence: function(n) {
-		const result = [0];
-		for(let i = 0; i < n-1; i++) {
-			result.push(fibonacci(i));
+		const result = [0, 1];
+		for(let i = 0; i < n-2; i++) {
+			let nextNumber = result[result.length - 1] + result[result.length - 2];
+			result.push(nextNumber);
 		}
 
 		return result;

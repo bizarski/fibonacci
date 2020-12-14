@@ -38,7 +38,7 @@ dbClient.connect((err) => {
 	
 	const size = parseInt(req.query.n, 10);
 	
-	if(size > 25)
+	if(size > 60)
 	{
 		return res.status(400).end();
 	}
