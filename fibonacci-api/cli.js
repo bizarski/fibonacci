@@ -1,19 +1,11 @@
-const yargs = require("yargs");
+const argv = require("yargs")
+	.alias("n", "size")
+	.describe("n", "The size of the fibonacci sequence")
+	.help("h")
+	.alias("h", "help")
+	.argv;
 
 const {generateMultiplicationTable, generateFibonacciSequence} = require("./lib");
-
-const argv = yargs
-    .command('generate', 'Genarates a new fibonacci multiplication table', {
-        size: {
-            description: 'The size of the fibonacci sequence',
-            alias: 'n',
-            type: 'number',
-        }
-    })
-    .help()
-    .alias('help', 'h')
-	.alias('size', 'n')
-    .argv;
 
 if(!argv.n)
 {

@@ -1,9 +1,9 @@
-require 'sinatra'
-require 'uri'
-require 'net/http'
-require 'json'
+require "sinatra"
+require "uri"
+require "net/http"
+require "json"
 
-get '/fibonacci' do
+get "/fibonacci" do
   size = params['n']
   
   table = nil
@@ -11,7 +11,7 @@ get '/fibonacci' do
   errorMessage = nil 
   
   if size
-	  uri = URI('http://localhost:3000/generate')
+	  uri = URI("http://localhost:3000/generate")
 	  reqParams = { :n => size }
 	  uri.query = URI.encode_www_form(reqParams)
 
@@ -29,16 +29,16 @@ get '/fibonacci' do
 		  end 
 		end
 	  rescue Errno::ECONNREFUSED => e 
-	    errorMessage = "API request timeout"
+	    errorMessage = "API request timeout. Please, try again later."
 	  end
   end
   
   erb :fibonacci, :locals => { :size => size, :table => table, :saved => saved, :errorMessage => errorMessage }, :layout => :application
 end
 
-post '/fibonacci' do
+post "/fibonacci" do
 
-  size = params['n']
+  size = params["n"]
   
   table = nil
   errorMessage = nil 
@@ -48,7 +48,7 @@ post '/fibonacci' do
 	errorMessage = "Missing value"
   end
 
-  uri = URI('http://localhost:3000/save')
+  uri = URI("http://localhost:3000/save")
   body = { "n" => size }.to_json 
 
   begin
@@ -65,7 +65,7 @@ post '/fibonacci' do
 	  end 
 	end
   rescue Errno::ECONNREFUSED => e 
-	errorMessage = "API request timeout"
+	errorMessage = "API request timeout. Please, try again later."
   end
 
   erb :fibonacci, :locals => { :size => size, :table => table, :saved => saved, :errorMessage => errorMessage }, :layout => :application

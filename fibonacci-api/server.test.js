@@ -1,7 +1,24 @@
-const axios = require("axios");
+const request = require("supertest");
+
+const config = require("./config");
+const server = require("./server");
   
-test("generate endpoint returns expected result", async () => {
-	expect.assertions(1);
+let appInstance;
+
+beforeAll(() => {
+	return server.init().then((app) => {
+		appInstance = app;
+	}).catch((err) => {
+		console.error(`Server exited with an error: ${err}`);
+		server.closeDb();
+	});
+});
+
+afterAll(() => {
+	return server.closeDb();
+});
+  
+test("generate endpoint returns expected result", () => {
 	const expectedResult = [
 		[null, 0, 1, 1, 2, 3],
 		[0, 0, 0, 0, 0, 0],
@@ -11,9 +28,9 @@ test("generate endpoint returns expected result", async () => {
 		[3, 0, 3, 3, 6, 9],
 	];
 	
-	const fetchResponse = axios.get("http://localhost:3000/generate?n=5")
-		.then((result) => result.data.table)
-		.catch(() => Promise.reject("request to server failed"));
-
-	await expect(fetchResponse).resolves.toEqual(expectedResult);
+	return request(appInstance).get("/generate?n=5")
+		.expect(200)
+		.then((response) => {
+			expect(response.body.table).toEqual(expectedResult);
+		});
 });

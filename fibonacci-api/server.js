@@ -7,23 +7,16 @@ const {generateMultiplicationTable, generateFibonacciSequence} = require("./lib"
 
 const app = express();
 app.use(bodyParser.json());
-const port = 3000;
 
-const dbUrl = "mongodb://localhost:27017";
-const dbName = "fibonaccidb";
-const dbClient = new MongoClient(dbUrl);
+const config = require("./config");
 
-dbClient.connect((err) => {
-  if(err)
-  {
-	  console.error("Could not connect to DB");
-	  console.error(err);
-	  process.exit();
-  }
-	
-  console.log("Connected successfully to MongoDB server");
+const dbClient = new MongoClient(config.dbUri, {
+	useNewUrlParser: true,
+	useUnifiedTopology: true
+});
 
-  const db = dbClient.db(dbName);
+function initializeRoutes (db) {
+  db.collection("sequences").createIndex({ n: 1 });
   
   app.get("/generate", (req, res) => {
 	if(!req.query.n)
@@ -43,11 +36,11 @@ dbClient.connect((err) => {
 		return res.status(400).end();
 	}
 	
-	db.collection("sequences").findOne({ n: size }).then((dbres) => {
-		if(dbres)
+	db.collection("sequences").findOne({ n: size }).then((doc) => {
+		if(doc)
 		{
 			return res.status(200).json({
-				table: dbres.table,
+				table: doc.table,
 				saved: true
 			});
 		}
@@ -72,13 +65,13 @@ dbClient.connect((err) => {
 	
 	const size = parseInt(req.body.n, 10);
 
-	if(size > 25)
+	if(size > 60)
 	{
 		return res.status(400).end();
 	}
 			
-	db.collection("sequences").findOne({ n: size }).then((dbres) => {
-		if(dbres)
+	db.collection("sequences").findOne({ n: size }).then((doc) => {
+		if(doc)
 		{
 			return res.status(400).end();
 		}
@@ -96,8 +89,26 @@ dbClient.connect((err) => {
 		});
 	});
   });
-});
+}
 
-app.listen(port, () => {
-  console.log(`Fibonacci API listening at http://localhost:${port}`)
-});
+module.exports = {
+	closeDb: () => {
+		dbClient.close();
+	},
+	init: () => {
+		return new Promise((resolve, reject) => {
+			dbClient.connect((err) => {
+				if(err)
+				{
+					return reject(err);
+				}
+					
+				console.log("Connected successfully to MongoDB server");		
+				
+				initializeRoutes(dbClient.db(config.dbName));
+				
+				return resolve(app);
+			});
+		});
+	}
+};
