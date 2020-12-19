@@ -7,12 +7,11 @@
 * Ruby 2.7.2 with the following gems: 
 	* sinatra
 	* uri
-	* net/http
 	* json
 
 ### Installation 
 
-* Download Ruby 2.7.2 from https://rubyinstaller.org/downloads/ and install the package
+* Download Ruby 2.7.2 from https://rubyinstaller.org/downloads/ and install the package with the **DevKit**
 * Add Ruby's path to your computer's "Path" System Environment Variable (Windows only)
 * In a terminal, go to the `fibonacci-ruby` folder and run `gem install` for each of the required gems 
 
