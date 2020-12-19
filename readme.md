@@ -12,8 +12,8 @@
 
 In order to have a running web application: 
 
-* Install and run the Ruby web server (see `fibonacci-ruby\readme.md`)
-* Install and run the Node.js API (see `fibonacci-api\readme.md`)
+* Install and run the Ruby web server (see [fibonacci-ruby\readme.md](https://github.com/bizarski/fibonacci/blob/master/fibonacci-ruby/readme.md))
+* Install and run the Node.js API (see [fibonacci-api\readme.md](https://github.com/bizarski/fibonacci/blob/master/fibonacci-api/readme.md))
 
 ### Running 
 
