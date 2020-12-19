@@ -94,8 +94,12 @@ function initializeRoutes (db) {
 module.exports = {
 	closeDb: () => {
 		dbClient.close();
+		console.log("Successfully closed connection to MongoDB server");		
 	},
-	init: () => {
+	deleteTestData: () => {
+		return dbClient.db(config.testDbName).collection("sequences").deleteMany();
+	},
+	init: (dbName) => {
 		return new Promise((resolve, reject) => {
 			dbClient.connect((err) => {
 				if(err)
@@ -105,7 +109,7 @@ module.exports = {
 					
 				console.log("Connected successfully to MongoDB server");		
 				
-				initializeRoutes(dbClient.db(config.dbName));
+				initializeRoutes(dbClient.db(dbName));
 				
 				return resolve(app);
 			});

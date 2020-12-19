@@ -4,5 +4,6 @@
 	"serverPort": 3000,
 	"testServerPort": 3001,
 	"dbUri": "mongodb://localhost:27017",
-	"dbName": "fibonaccidb"
+	"dbName": "fibonaccidb",
+	"testDbName": "fibonaccitest"
 }

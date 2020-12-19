@@ -1,10 +1,10 @@
 const {generateFibonacciSequence, generateMultiplicationTable} = require("./lib");
 
-test("fibonacci sequence with size of 5", () => {
+test("should return correct fibonacci sequence", () => {
 	expect(generateFibonacciSequence(5)).toEqual([0, 1, 1, 2, 3]);
 });
 
-test("multiplication table from a sequence of numbers 1, 2, 3", () => {
+test("should return multiplication table from a sequence of numbers", () => {
 	const expectedResult = [
 		[null, 1, 2, 3],
 		[1, 1, 2, 3],

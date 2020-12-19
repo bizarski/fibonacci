@@ -1,7 +1,7 @@
 const config = require("./config");
 const server = require("./server");
 
-server.init().then((app) => {
+server.init(config.dbName).then((app) => {
 	app.listen(config.serverPort, () => {
 	  console.log(`Fibonacci API listening at ${config.serverProtocol}://${config.serverHost}:${config.serverPort}`)
 	});	
