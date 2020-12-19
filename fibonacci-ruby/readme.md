@@ -1,6 +1,6 @@
 # Fibonacci Multiplication Table Generator 
 
-## Ruby web application
+## Ruby web server
 
 ### Requirements 
 
@@ -9,12 +9,11 @@
 	* uri
 	* net/http
 	* json
-* Windows 7 or higher
 
 ### Installation 
 
-* Download Ruby 2.7.2 from https://rubyinstaller.org/downloads/ and install it on Windows
-* Add Ruby's path to your computer's "Path" System Environment Variable 
+* Download Ruby 2.7.2 from https://rubyinstaller.org/downloads/ and install the package
+* Add Ruby's path to your computer's "Path" System Environment Variable (Windows only)
 * In a terminal, go to the `fibonacci-ruby` folder and run `gem install` for each of the required gems 
 
 ### Running the app  
