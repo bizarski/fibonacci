@@ -3,6 +3,8 @@ require "uri"
 require "net/http"
 require "json"
 
+set :port, 4000
+
 get "/fibonacci" do
   size = params['n']
   
