@@ -15,6 +15,7 @@
 ### MongoDB Installation 
 
 * Download MongoDB 4.0.21 from https://www.mongodb.com/try/download/community?tck=docs_server and install the package
+* No need to install Compass
 * Make sure MongoDB runs as a service 
 
 ### Configuring the web application
