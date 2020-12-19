@@ -15,10 +15,10 @@
 
 ### MongoDB Installation 
 
-* Download MongoDB 4.0 from https://www.mongodb.com/try/download/community?tck=docs_server and install it on Windows
+* Download MongoDB 4.0.21 from https://www.mongodb.com/try/download/community?tck=docs_server and install it on Windows
 * Make sure MongoDB runs as a service 
 
-### Configuring the app 
+### Configuring the web application
 
 The app configuration is located in `fibonacci-api\config.json`
 
@@ -30,7 +30,7 @@ The app configuration is located in `fibonacci-api\config.json`
 * dbName: the name of the database; default is "fibonaccidb"
 * testDbName: the name of the test database where the automation tests will handle data; default is "fibonaccitest"
 
-### Running web application 
+### Running the web application 
 
 * In a terminal, go to the `fibonacci-api` folder and run `npm start`
 
