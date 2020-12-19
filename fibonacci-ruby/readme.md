@@ -11,7 +11,8 @@
 
 ### Installation 
 
-* Download Ruby 2.7.2 from https://rubyinstaller.org/downloads/ and install the package with the **DevKit**
+* Download Ruby 2.7.2 from https://rubyinstaller.org/downloads/ and install the package with the **DevKit** 
+* Make sure to check the MSYS2 box
 * Add Ruby's path to your computer's "Path" System Environment Variable (Windows only)
 * In a terminal, go to the `fibonacci-ruby` folder and run `gem install` for each of the required gems 
 
